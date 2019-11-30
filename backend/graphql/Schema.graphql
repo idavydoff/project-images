@@ -1,0 +1,7 @@
+#import * from "Types.graphql";
+#import * from "Inputs.graphql";
+
+type Query {
+    images (input: ImagesInput!): [Image]!
+    iclasses (input: ImageClassesInput!): [ImageClass]!
+}

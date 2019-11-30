@@ -1,17 +1,20 @@
 type Image {
+    _id: String!
     path: String!
-    likes: [Like]!
+    likes: [Like]
     class: ImageClass!
     date: String!
 }
 
 type ImageClass {
+    _id: String!
     emoji: String!
-    quantity: Number
+    quantity: Int
     mainImage: Image
 }
 
 type Like {
+    _id: String!
     ip: String!
     image: Image!
 }

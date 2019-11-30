@@ -1,0 +1,7 @@
+input ImagesInput {
+    limit: Int
+}
+
+input ImageClassesInput {
+    limit: Int
+}
