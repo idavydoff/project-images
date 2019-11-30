@@ -18,7 +18,7 @@ app.listen(3000, () => {
         useNewUrlParser: true,
         useUnifiedTopology: true
     },
-    (error) => {
+    error => {
         if (error) throw error;
         console.log('MongoDb is running');
     })

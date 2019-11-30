@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 
-const { ObjectId } = Schem.Types;
+const { ObjectId } = Schema.Types;
 
 const ImagesSchema = new Schema({
     path: String,
@@ -15,4 +15,4 @@ const ImagesSchema = new Schema({
     }
 });
 
-export const model = mongoose.model('Images', 'ImagesSchema');
+export default mongoose.model('Images', ImagesSchema);

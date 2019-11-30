@@ -4,4 +4,4 @@ const imageClassesSchema = new Schema({
     emoji: String
 });
 
-export const model = mongoose.model('ImageClasses', 'imageClassesSchema');
+export default mongoose.model('ImageClasses', imageClassesSchema);

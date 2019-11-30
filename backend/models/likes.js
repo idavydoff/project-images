@@ -1,6 +1,6 @@
 import mongoose, { Schema } from 'mongoose';
 
-const { ObjectId } = Schem.Types;
+const { ObjectId } = Schema.Types;
 
 const likesSchema = new Schema({
     ip: String,
@@ -10,4 +10,4 @@ const likesSchema = new Schema({
     }
 });
 
-export const model = mongoose.model('Likes', 'likesSchema');
+export default mongoose.model('Likes', likesSchema);
