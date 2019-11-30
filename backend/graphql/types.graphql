@@ -1,0 +1,17 @@
+type Image {
+    path: String!
+    likes: [Like]!
+    class: ImageClass!
+    date: String!
+}
+
+type ImageClass {
+    emoji: String!
+    quantity: Number
+    mainImage: Image
+}
+
+type Like {
+    ip: String!
+    image: Image!
+}
