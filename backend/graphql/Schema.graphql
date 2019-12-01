@@ -1,7 +1,12 @@
 #import * from "Types.graphql";
 #import * from "Inputs.graphql";
 
+scalar Upload
 type Query {
     images (input: ImagesInput!): [Image]!
-    iclasses (input: ImageClassesInput!): [ImageClass]!
+    iclasses: [ImageClass]!
+}
+
+type Mutation {
+    uploadImage (input: UploadInput!): Boolean
 }

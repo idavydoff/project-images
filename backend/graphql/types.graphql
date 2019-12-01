@@ -2,12 +2,11 @@ type Image {
     _id: String!
     path: String!
     likes: [Like]
-    class: ImageClass!
+    class: String!
     date: String!
 }
 
 type ImageClass {
-    _id: String!
     emoji: String!
     quantity: Int
     mainImage: Image

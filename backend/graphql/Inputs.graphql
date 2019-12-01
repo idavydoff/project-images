@@ -1,7 +1,11 @@
+#import * from "Schema.graphql";
+
 input ImagesInput {
     limit: Int
 }
 
-input ImageClassesInput {
-    limit: Int
+input UploadInput {
+    image: Upload!
+    class: String!
 }
+
