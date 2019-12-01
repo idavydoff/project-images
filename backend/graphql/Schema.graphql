@@ -4,7 +4,10 @@
 scalar Upload
 type Query {
     images (input: ImagesInput!): [Image]!
+    image (input: ImagesInput!): Image!
     iclasses: [ImageClass]!
+    like (input: LikeInput): Like!
+    likes: [Like]!
 }
 
 type Mutation {

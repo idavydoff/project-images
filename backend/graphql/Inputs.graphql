@@ -4,8 +4,15 @@ input ImagesInput {
     limit: Int
 }
 
+input ImageInput {
+    id: String!
+}
+
 input UploadInput {
     image: Upload!
     class: String!
 }
 
+input LikeInput {
+    id: String!
+}
