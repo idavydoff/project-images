@@ -10,11 +10,12 @@ require('dotenv').config();
 
 const app = express();
 
-app.use(bodyParser.json({limit: '50mb', extended: true}))
-app.use(bodyParser.urlencoded({limit: '50mb', extended: true}))
+app.use(bodyParser.json({limit: '50mb', extended: true}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
+
+app.use('/images', express.static('images'));
 
 const typeDefs = importSchema('./graphql/Schema.graphql');
-
 app.use('/graphql',
     graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 2 }), 
     graphql({
