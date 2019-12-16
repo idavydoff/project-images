@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { observer, inject } from "mobx-react";
+import axios from "axios";
 
 const app = ({ Store }) => {
     return (
-        <h1>{Store.show ? 1 : 0}</h1>
+        <h1 className="text-center text-muted">Project Images</h1>
     );
-}
+};
 
 export default inject("Store")(observer(app));

@@ -3,7 +3,7 @@
 
 scalar Upload
 type Query {
-    images (input: ImagesInput!): [Image]!
+    images (input: ImagesInput): [Image]!
     image (input: ImagesInput!): Image!
     iclasses: [ImageClass]!
     like (input: LikeInput): Like!

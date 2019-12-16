@@ -2,7 +2,13 @@ import { Images, Likes } from '../../models';
 
 export default {
     images: async (parent, { input }) => {
-        let { limit } = input;
+        let limit;
+        if (input) {
+            limit = input.limit;
+        }
+        else {
+            limit = null;
+        }
         return limit ? await Images.find().populate('likes').limit(limit) : await Images.find().populate('likes');
     },
     
