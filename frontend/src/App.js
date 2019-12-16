@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
+import { observer, inject } from "mobx-react";
 
-
-const App = () => {
+const app = ({ Store }) => {
     return (
-        <div className="App">123</div>
+        <h1>{Store.show ? 1 : 0}</h1>
     );
-};
+}
 
-export default App;
+export default inject("Store")(observer(app));
