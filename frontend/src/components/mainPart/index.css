@@ -1,0 +1,39 @@
+.imageBlock{
+    height: 200px;
+    justify-content: center;
+    background-color: black;
+    overflow: hidden;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.imageBlock:hover .curImage{
+    width: 70%;
+}
+
+.imageBlock .curImage{
+    width: 100%;
+    height: auto;
+    transition: .3s;
+}
+
+.imageBlock .likes-counter{
+    position: absolute;
+    color: white;
+    width: 100%;
+    height: 15%;
+    bottom: 0;
+    justify-content: center;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.imageBlock .likes-counter img {
+    width: 15%;
+    height: 100%;
+}
+
+.extra{
+    position: relative;
+}

@@ -24,7 +24,7 @@ class Store {
           }
         );
         let every = data.data.data.images;
-        this.mostLiked = every.sort((a, b) => b.likes.length - a.likes.length).slice(0, 3);
+        this.mostLiked = every.sort((a, b) => b.likes.length - a.likes.length).slice(0, 6);
     }
 
     @action async getRecentlyAdded() {
@@ -45,7 +45,7 @@ class Store {
           }
         );
         let every = data.data.data.images;
-        this.recentlyAdded = every.sort((a, b) => b.date - a.date).slice(0, 3);
+        this.recentlyAdded = every.sort((a, b) => b.date - a.date).slice(0, 6);
     }
 
     @action async getIClassesList() {

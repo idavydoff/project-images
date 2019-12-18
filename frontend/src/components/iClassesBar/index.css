@@ -4,14 +4,14 @@
 }
 
 .class-item {
-    background-color: rgb(224, 224, 224);
+    background-color: #f6f7f9;
     border-radius: 5px;
     cursor: pointer;
     transition: .3s;
 }
 
 .class-item:hover {
-    background-color: rgb(204, 204, 204);
+    background-color: #ebebeb;
 }
 
 .class-item img {

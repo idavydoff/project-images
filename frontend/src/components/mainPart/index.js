@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
 import { observer, inject } from "mobx-react";
-// import styles from './index.css';
+import MostLiked from "./mostLiked";
+import "./index.css";
+import RecentlyAdded from "./recentlyAdded";
 
 const mainPart = ({ Store }) => {
     return (
         <div className="container-fluid component">
-            <br />
+            <MostLiked />
+            <RecentlyAdded />
         </div>
     );
 }

@@ -15,9 +15,9 @@ const IClassesBar = ({ Store }) => {
     return (
         <div className="container-fluid component classes-bar p-2">
             {classes && classes.map((cur, i) => (
-                <p className="class-item d-flex justify-content-between align-items-center p-2 pl-3 pr-3">
+                <p className="class-item d-flex justify-content-between align-items-center p-2 pl-3 pr-3" key={i}>
                     <img src={uConvert(cur.emoji)} />
-                    <span class="badge badge-light">{cur.quantity}</span>
+                    <span className="badge badge-light">{cur.quantity}</span>
                 </p>
             ))}
         </div>
