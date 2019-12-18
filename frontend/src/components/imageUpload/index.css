@@ -1,0 +1,28 @@
+.choose-emoji {
+    width: 100px;
+    height: 100px;
+}
+
+.emoji-to-choose {
+    background-color: #f6f7f9;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.emoji-to-choose img{
+    width: 100%;
+    height: auto;
+}
+
+.emoji-to-choose:hover {
+    background-color: #ececec;
+}
+
+.emoji-to-choose.choosed {
+    background-color: rgb(106, 182, 106);
+}
+
+.custom-file-label {
+    overflow: hidden;
+}

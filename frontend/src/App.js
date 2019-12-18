@@ -1,11 +1,22 @@
 import React, { useEffect } from "react";
-import { observer, inject } from "mobx-react";
-import axios from "axios";
+import ImageUpload from "./components/imageUpload";
+import MainPart from "./components/mainPart";
 
-const app = ({ Store }) => {
+const app = () => {
     return (
-        <h1 className="text-center text-muted">Project Images</h1>
+        <div className="row">
+            <div className="col-lg-10 offset-lg-1 p-0 pl-2 pr-2">
+                <div className="row m-4">
+                    <div className="col-lg-8">
+                        <MainPart />
+                    </div>
+                    <div className="col-lg-4">
+                        <ImageUpload />
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 };
 
-export default inject("Store")(observer(app));
+export default app;
