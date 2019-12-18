@@ -6,7 +6,7 @@ import uuidv4 from 'uuid/v4';
 export default {
     uploadImage: async (parent, { input }) => {
         const { filename, createReadStream } = await input.image;
-        let imgType = filename.split('.')[filename.split('.').length - 1]
+        let imgType = filename.split('.')[filename.split('.').length - 1];
         let newFileName = uuidv4() + '.' + imgType;
         return new Promise(async (resolve) => {
             createReadStream()
@@ -20,8 +20,6 @@ export default {
                     resolve(true)
                 })
                 .on('error', () => resolve(false));
-        })
+        });
     }
 };
-
-// Postman operations: {"query": "mutation ($image: Upload!, $class: String!) {uploadImage(input: {image: $image, class: $class})}", "variables": {"image": null, "class": "✨" }}

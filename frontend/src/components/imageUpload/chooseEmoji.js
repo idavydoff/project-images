@@ -32,21 +32,21 @@ const ChooseEmoji = ({ emoji, setEmoji }) => {
                             {type == 1 && (
                                 <Fragment>
                                     {emojis.emotions.map((cur, i) => (
-                                        <EmojiComponent key={i} name={cur.name} link={cur.link} setEmoji={setEmoji} choosed={emoji == cur.name}/>
+                                        <EmojiComponent key={i} cur={cur} setEmoji={setEmoji} choosed={emoji == cur}/>
                                     ))}
                                 </Fragment>
                             )}
                             {type == 2 && (
                                 <Fragment>
                                     {emojis.objects.map((cur, i) => (
-                                        <EmojiComponent key={i} name={cur.name} link={cur.link} setEmoji={setEmoji} choosed={emoji == cur.name}/>
+                                        <EmojiComponent key={i} cur={cur} setEmoji={setEmoji} choosed={emoji == cur}/>
                                     ))}
                                 </Fragment>
                             )}
                             {type == 3 && (
                                 <Fragment>
                                     {emojis.activities.map((cur, i) => (
-                                        <EmojiComponent key={i} name={cur.name} link={cur.link} setEmoji={setEmoji} choosed={emoji == cur.name}/>
+                                        <EmojiComponent key={i} cur={cur} setEmoji={setEmoji} choosed={emoji == cur}/>
                                     ))}
                                 </Fragment>
                             )}

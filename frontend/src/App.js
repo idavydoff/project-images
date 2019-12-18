@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import ImageUpload from "./components/imageUpload";
 import MainPart from "./components/mainPart";
+import IClassesBar from "./components/iClassesBar";
 
 const app = () => {
     return (
@@ -12,6 +13,7 @@ const app = () => {
                     </div>
                     <div className="col-lg-4">
                         <ImageUpload />
+                        <IClassesBar />
                     </div>
                 </div>
             </div>
