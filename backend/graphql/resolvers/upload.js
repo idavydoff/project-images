@@ -13,7 +13,7 @@ export default {
                 .pipe(createWriteStream(__dirname + `/../../images/${newFileName}`))
                 .on('finish', async () => {
                     const newImage = new Images({
-                        path: path.join(__dirname, `/../../images/${newFileName}`),
+                        path: newFileName,
                         class: input.class
                     })
                     await newImage.save()
