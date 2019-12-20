@@ -37,3 +37,8 @@
 .extra{
     position: relative;
 }
+
+.emoji-logo {
+    width: 100px;
+    margin: auto;
+}

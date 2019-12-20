@@ -5,16 +5,16 @@ class Store {
     @observable mostLiked = [];
     @observable recentlyAdded = [];
     @observable iClassesList = [];
+    @observable byEmojiList = [];
     @observable imageUploadData = "";
 
-    @action async getMostLiked() {
+    @action async getMostLiked(isHome, page) {
         const data = await axios.post("/graphql", {
             query: `
                 query{
-                    images {
+                    images (input: {state: "ML", page: ${page}}){
                         _id
                         path
-                        class
                         likes {
                             _id
                         }
@@ -24,17 +24,16 @@ class Store {
           }
         );
         let every = data.data.data.images;
-        this.mostLiked = every.sort((a, b) => b.likes.length - a.likes.length).slice(0, 6);
+        this.mostLiked = isHome ? every.slice(0, 6) : every;
     }
 
-    @action async getRecentlyAdded() {
+    @action async getRecentlyAdded(isHome, page) {
         const data = await axios.post("/graphql", {
             query: `
                 query{
-                    images {
+                    images (input: {state: "RA", page: ${page}}){
                         _id
                         path
-                        class
                         likes {
                             _id
                         }
@@ -45,7 +44,29 @@ class Store {
           }
         );
         let every = data.data.data.images;
-        this.recentlyAdded = every.sort((a, b) => b.date - a.date).slice(0, 6);
+        this.recentlyAdded = isHome ? every.slice(0, 6) : every;
+    }
+
+    @action async getImagesByEmoji(emoji, page) {
+        console.log(emoji);
+        const data = await axios.post("/graphql", {
+            query: `
+                query{
+                    images (input: {state: "BC", page: ${page}, classEmoji: "${emoji}"}){
+                        _id
+                        path
+                        likes {
+                            _id
+                        }
+                        date
+                    }
+                }
+            `
+        });
+        console.log(data);
+        
+        let every = data.data.data.images;
+        this.byEmojiList = every;
     }
 
     @action async getIClassesList() {

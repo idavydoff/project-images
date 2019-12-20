@@ -1,7 +1,9 @@
 #import * from "Schema.graphql";
 
 input ImagesInput {
-    limit: Int
+    state: String!
+    page: Int!
+    classEmoji: String
 }
 
 input ImageInput {
