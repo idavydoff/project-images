@@ -4,9 +4,17 @@ import axios from "axios";
 class Store {
     @observable mostLiked = [];
     @observable recentlyAdded = [];
-    @observable iClassesList = [];
     @observable byEmojiList = [];
+    @observable canLoad = true;
+    @observable iClassesList = [];
     @observable imageUploadData = "";
+
+    @action clearAll() {
+        this.mostLiked = [];
+        this.recentlyAdded = [];
+        this.byEmojiList = [];
+        this.canLoad = true;
+    }
 
     @action async getMostLiked(isHome, page) {
         const data = await axios.post("/graphql", {
@@ -24,7 +32,8 @@ class Store {
           }
         );
         let every = data.data.data.images;
-        this.mostLiked = isHome ? every.slice(0, 6) : every;
+        if (every.length == 0) this.canLoad = false;
+        this.mostLiked = isHome ? every.slice(0, 6) : [...this.mostLiked, ...every];
     }
 
     @action async getRecentlyAdded(isHome, page) {
@@ -44,11 +53,11 @@ class Store {
           }
         );
         let every = data.data.data.images;
-        this.recentlyAdded = isHome ? every.slice(0, 6) : every;
+        if (every.length == 0) this.canLoad = false;
+        this.recentlyAdded = isHome ? every.slice(0, 6) : [...this.recentlyAdded, ...every];
     }
 
     @action async getImagesByEmoji(emoji, page) {
-        console.log(emoji);
         const data = await axios.post("/graphql", {
             query: `
                 query{
@@ -63,10 +72,9 @@ class Store {
                 }
             `
         });
-        console.log(data);
-        
         let every = data.data.data.images;
-        this.byEmojiList = every;
+        if (every.length == 0) this.canLoad = false;
+        this.byEmojiList = [...this.byEmojiList, ...every];
     }
 
     @action async getIClassesList() {
@@ -100,7 +108,6 @@ class Store {
             headers: {"Content-Type": "multipart/form-data" }
         })
         this.imageUploadData = "Loading";
-        console.log(data.data.data); 
         if (data.data.data.uploadImage == true) {
             this.imageUploadData = "Success";
         }

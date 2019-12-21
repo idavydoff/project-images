@@ -16,7 +16,7 @@ const ChooseEmoji = ({ emoji, setEmoji }) => {
                 </div>
 
                 <div className="modal-body">
-                    <ul className="nav justify-content-center mb-4">
+                    <ul className="nav nav-justified mb-4">
                         <li className="nav-item">
                             <a className={`nav-link ${type == 1 && "disabled"}`} href="#" onClick={() => setType(1)}>Emotions</a>
                         </li>

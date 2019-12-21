@@ -3,35 +3,30 @@ import { inject, observer } from "mobx-react";
 import { Link } from "react-router-dom";
 import Image from "../image";
 
-const MostLiked = ({ Store, isHome }) => {
+const MostLiked = ({ Store, isHome, location }) => {
     const list = Store.mostLiked;
+    const [page, setPage] = useState(1);
     
     useEffect(() => {
+        Store.clearAll();
         Store.getMostLiked(isHome, 1);
-    }, [isHome])
+        setPage(1);
+    }, [location])
+
+    const loadNew = () => {
+        setPage(page+1);
+        Store.getMostLiked(isHome, page + 1);
+    }
 
     return (
         <div className="container-fluid p-2">
-            {isHome ? (
-                <Link to="/most-liked"><h4 className="text-center text-muted mb-1">Most Liked</h4></Link>
-            ) : (
-                <ul className="nav justify-content-center mb-4">
-                    <li className="nav-item">
-                        <Link className="nav-link disabled" to="/most-liked">MostLiked</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/">Home</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/recently-added">Recently Added</Link>
-                    </li>
-                </ul>
-            )}
+            <h4 className="text-center text-muted mb-1">Most Liked</h4>
             <div className="row p-3">
                 {list && list.map((img, i) => (
                     <Image img={img} key={i}/>
                 ))}
             </div>
+            {(!isHome && Store.canLoad) && <center><button className="btn btn-info mb-2" onClick={loadNew}>More</button></center>}
         </div>
     );
 }
