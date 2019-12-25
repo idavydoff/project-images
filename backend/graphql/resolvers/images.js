@@ -1,5 +1,4 @@
-import { Images, Likes } from '../../models';
-import likes from '../../models/likes';
+import { Images } from '../../models';
 
 export default {
     images: async (parent, { input }) => {
@@ -23,11 +22,11 @@ export default {
                 return await Images.find({class: input.classEmoji}).limit(itemsPerPage).skip(pageOffset);
             }
         }
-        else return await Images.find().populate('likes');
+        else return await Images.find();
     },
     
     image: async (parent, { input }) => {
         let { id } = input;
-        return await Images.findById(id).populate('likes');
+        return await Images.findById(id);
     }
 };

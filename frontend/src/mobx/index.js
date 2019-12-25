@@ -8,6 +8,8 @@ class Store {
     @observable canLoad = true;
     @observable iClassesList = [];
     @observable imageUploadData = "";
+    @observable imageData = null;
+    @observable setLikeData = false;
 
     @action clearAll() {
         this.mostLiked = [];
@@ -23,9 +25,7 @@ class Store {
                     images (input: {state: "ML", page: ${page}}){
                         _id
                         path
-                        likes {
-                            _id
-                        }
+                        likes
                     }
                 }
             `
@@ -43,9 +43,7 @@ class Store {
                     images (input: {state: "RA", page: ${page}}){
                         _id
                         path
-                        likes {
-                            _id
-                        }
+                        likes
                         date
                     }
                 }
@@ -64,9 +62,7 @@ class Store {
                     images (input: {state: "BC", page: ${page}, classEmoji: "${emoji}"}){
                         _id
                         path
-                        likes {
-                            _id
-                        }
+                        likes
                         date
                     }
                 }
@@ -90,6 +86,37 @@ class Store {
           }
         );
         this.iClassesList = data.data.data.iclasses.sort((a, b) => b.quantity - a.quantity);
+    }
+
+    @action async getImage(id) {
+        this.setLikeData = false;
+        const data = await axios.post("/graphql", {
+            query: `
+                query{
+                    image (input: {id: "${id}"}) {
+                        path
+                        class
+                        likes
+                        date
+                    }
+                }
+              
+            `
+          }
+        );
+        this.imageData = data.data.data.image;
+    }
+
+    @action async setLike(id) {
+        const data = await axios.post("/graphql", {
+            query: `
+                mutation{
+                    setLike (input: {id: "${id}"})
+                }
+            `
+          }
+        );
+        this.setLikeData = data.data.data.setLike;
     }
 
     @action async uploadImage(image, emoji) {

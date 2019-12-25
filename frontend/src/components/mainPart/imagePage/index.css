@@ -1,0 +1,16 @@
+.img-container img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.image-like {
+}
+
+.image-like i {
+    cursor: pointer;
+    transition: .3s;
+}
+
+.image-like>h3>i:hover{
+    color: rgb(155, 40, 40) !important;
+}

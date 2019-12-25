@@ -1,18 +1,16 @@
 import ImagesClassesResolvers from './imageClasses';
 import ImagesResolvers from './images';
-import UploadResolvers from './upload';
-import LikesResolvers from './likes';
+import MutationResolvers from './mutations';
 import { GraphQLUpload } from "graphql-upload";
 
 export default {
     Query: {
         ...ImagesClassesResolvers,
-        ...ImagesResolvers,
-        ...LikesResolvers
+        ...ImagesResolvers
     },
 
     Mutation: {
-        ...UploadResolvers
+        ...MutationResolvers
     },
     
     Upload: GraphQLUpload

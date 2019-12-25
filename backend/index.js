@@ -32,6 +32,6 @@ app.listen(3000, () => {
     error => {
         if (error) throw error;
         console.log('MongoDb is running');
-    })
+    });
     console.log('App is working');
 });

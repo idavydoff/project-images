@@ -10,7 +10,7 @@ const Image = ({ img }) => {
                         <img className="curImage" src={`/images/${img.path}`} />
                         <div className="likes-counter d-flex align-items-center p-1">
                             <img src="https://twemoji.maxcdn.com/svg/2764.svg"/>
-                            <span className="text-center mb-0"><b>{img.likes.length}</b></span>
+                            <span className="text-center mb-0"><b>{img.likes}</b></span>
                         </div>
                     </div>
                 </div>

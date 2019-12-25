@@ -4,7 +4,10 @@ const { ObjectId } = Schema.Types;
 
 const ImagesSchema = new Schema({
     path: String,
-    likes: [{ type: ObjectId, ref: 'Likes' }],
+    likes: {
+        type: Number,
+        default: 0
+    },
     class: String,
     date: {
         type: Date,

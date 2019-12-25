@@ -20,10 +20,6 @@ const byEmoji = ({Store, match, location}) => {
         setPage(page+1);
         Store.getImagesByEmoji(match.params.emoji, page + 1);
     }
-    
-    // useEffect(() => {
-    //     Store.getImagesByEmoji(match.params.emoji, 1);
-    // }, [match.params.emoji])
 
     return (
         <div className="container-fluid p-2">
